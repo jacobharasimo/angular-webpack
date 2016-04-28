@@ -1,7 +1,8 @@
 node_modules/
 .idea/
 *.css
-bundle.js
+*.bundle.js
+*.map
 .tmp
 .sass-cache
 *.orig.*

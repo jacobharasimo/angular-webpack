@@ -1,7 +1,11 @@
 {
   "name": "angular-webpack",
   "version": "1.0.0",
-  "description": "",
+  "description": "Angular Webpack bootsrap sample",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jacobharasimo/angular-webpack.git"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --content-base app --inline --hot",
@@ -10,13 +14,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^3.0.4",
+    "html-minify-loader": "^1.1.0",
+    "ng-annotate-loader": "^0.1.0",
     "node-sass": "^3.6.0",
     "path": "^0.12.7",
     "postcss-loader": "^0.8.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },
