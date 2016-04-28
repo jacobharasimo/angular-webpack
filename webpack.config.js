@@ -12,12 +12,12 @@ console.info('>> node environment is ', NODE_ENV);
 module.exports = {
     context: APP,
     entry: {
-        main: ['webpack/hot/dev-server', './core/bootstrap.js'],
-        vendor: './core/vendor.js'
+        main: ['webpack/hot/dev-server', './app'],
+        vendor: './core/vendor'
     },
     output: {
         publicPath: "/assets/",
-        path: path.resolve(APP+'/assets/'),
+        path: path.resolve(APP + '/assets/'),
         filename: '[name].bundle.js'
     },
     plugins: [
@@ -25,6 +25,9 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin("[name].css", {allChunks: true})
     ],
+    resolve: {
+        extensions: ['', '.webpack.js', '.ts', '.js']
+    },
     module: {
         preLoaders: [
             {
@@ -45,11 +48,10 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'raw!html-minify'
             },
-            /*optional to expose jQuery for 3rd party tools*/
-            /*{
-             test: /jquery\.js$/,
-             loader: 'expose?$!expose?jQuery'
-             },*/
+            {
+                test: /jquery\.js$/,
+                loader: 'expose?$!expose?jQuery'
+            },
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css!postcss')
