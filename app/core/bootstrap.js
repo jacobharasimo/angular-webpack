@@ -2,6 +2,7 @@
 'use strict';
 // load vendor dependencies
 require('./vendor');
+require('./assets');;
 // load the main app file
 var appModule = require('../app');
 // replaces ng-app="appName"

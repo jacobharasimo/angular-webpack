@@ -1,7 +1,7 @@
 'use strict';
 var webpack = require('webpack'),
     path = require('path');
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var APP = path.resolve('./app');
 
 module.exports = {
@@ -15,6 +15,15 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
+        new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin("main.css",{allChunks:true})
+    ],
+    module:{
+        loaders:[
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('style-loader','css?sourceMap!postcss!sass-loader?=expanded&sourceMap=true&sourceMapContents=true')
+            }
+        ]
+    }
 };
