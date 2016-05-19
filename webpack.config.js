@@ -21,18 +21,16 @@ module.exports = {
         filename: '[name].bundle.js'
     },
     devServer: {
+        host: '127.0.0.1',
+        port: '8080',
         proxy: {
-            '/api*': {
-                target: 'http://localhost:8082',
-                secure: false
-            }
+
         },
         watchOptions: {
             aggregateTimeout: 300,
             poll: 1000
         },
-        historyApiFallback: true,
-        host: '0.0.0.0'
+        historyApiFallback: true
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
