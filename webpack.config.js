@@ -20,11 +20,19 @@ module.exports = {
         path: path.resolve(APP + '/assets/'),
         filename: '[name].bundle.js'
     },
-    proxy: {
-        '/apipath*': {
-        target: 'https://other-server.example.com',
-        secure: false
-        }
+    devServer: {
+        proxy: {
+            '/api*': {
+                target: 'http://localhost:8082',
+                secure: false
+            }
+        },
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        },
+        historyApiFallback: true,
+        host: '0.0.0.0'
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
@@ -44,19 +52,28 @@ module.exports = {
         ],
         loaders: [
             {
-                /*Enable typescript annotation*/
                 test: /\.ts$/,
                 loader: isProd ? 'ng-annotate!ts' : 'ts',
                 exclude: /node_modules/
             },
             {
+                test: /jquery\.js$/,
+                loader: 'expose?$!expose?jQuery'
+            },
+            {
+                test: /\.(eot(\?)?|woff|woff2|ttf|svg|png|jpg|gif)$/,
+                include: /\node_modules\//,
+                loader: 'url?name=[1].[ext]&limit=10000&regExp=node_modules/(.*)'
+            },
+            {
+                test: /\.(eot(\?)?|woff|woff2|ttf|svg|png|jpg|gif)$/,
+                exclude: /\node_modules\//,
+                loader: 'url?name=[path][name].[ext]&limit=10000'
+            },
+            {
                 test: /\.html$/,
                 exclude: /node_modules/,
                 loader: 'raw!html-minify'
-            },
-            {
-                test: /jquery\.js$/,
-                loader: 'expose?$!expose?jQuery'
             },
             {
                 test: /\.css$/,
@@ -79,3 +96,17 @@ module.exports = {
     ],
     devtool: !isProd ? 'source-map' : null
 };
+
+if (isProd) {
+    module.exports.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                drop_console: true
+            },
+            //mangle: true,
+            //beautify: false,
+            sourceMap: false
+        })
+    );
+}
