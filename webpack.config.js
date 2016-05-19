@@ -20,6 +20,12 @@ module.exports = {
         path: path.resolve(APP + '/assets/'),
         filename: '[name].bundle.js'
     },
+    proxy: {
+        '/apipath*': {
+        target: 'https://other-server.example.com',
+        secure: false
+        }
+    },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
         new webpack.HotModuleReplacementPlugin(),
