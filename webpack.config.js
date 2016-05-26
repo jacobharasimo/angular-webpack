@@ -1,6 +1,5 @@
 'use strict';
 const NODE_ENV = process.env.NODE_ENV || 'development';
-var isProd = NODE_ENV === 'production';
 var webpack = require('webpack'),
     path = require('path'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
@@ -51,7 +50,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: isProd ? 'ng-annotate!ts' : 'ts',
+                loader: 'ng-annotate!ts',
                 exclude: /node_modules/
             },
             {
@@ -92,19 +91,5 @@ module.exports = {
     postcss: [
         autoprefixer({browsers: ['last 2 versions']})
     ],
-    devtool: !isProd ? 'source-map' : null
+    devtool: 'source-map'
 };
-
-if (isProd) {
-    module.exports.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: true
-            },
-            //mangle: true,
-            //beautify: false,
-            sourceMap: false
-        })
-    );
-}

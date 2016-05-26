@@ -30,7 +30,7 @@ module.exports = {
             },
             //mangle: true,
             //beautify: false,
-            sourceMap: true
+            sourceMap: false
         }),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin("[name].css", {allChunks: true})
