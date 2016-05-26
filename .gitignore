@@ -1,5 +1,7 @@
 node_modules/
 .idea/
+dist/
+/app/assets/
 *.css
 *.bundle.js
 *.map
@@ -9,4 +11,3 @@ node_modules/
 *.base.*
 *.remote.*
 *.local .*
-

@@ -1,6 +1,6 @@
 {
   "files": [
-    "typings/browser.d.ts"
+    "typings/index.d.ts"
   ],
   "compilerOptions": {
     "sourceMap": true,
