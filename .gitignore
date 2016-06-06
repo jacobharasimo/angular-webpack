@@ -1,10 +1,9 @@
 node_modules/
 .idea/
 dist/
-/app/assets/
-*.css
-*.bundle.js
-*.map
+app/**/*.js
+app/**/*.js.map
+
 .tmp
 .sass-cache
 *.orig.*

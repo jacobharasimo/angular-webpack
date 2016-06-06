@@ -78,7 +78,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap!postcss!sass-loader?=expanded&sourceMap=true&sourceMapContents=true')
+                loader: ExtractTextPlugin.extract('style-loader', 'css?postcss!sass-loader?=expanded&sourceMap=false&sourceMapContents=false')
             }
         ]
     },

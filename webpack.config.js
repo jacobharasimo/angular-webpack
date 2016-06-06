@@ -23,7 +23,10 @@ module.exports = {
         host: '127.0.0.1',
         port: '8080',
         proxy: {
-
+            '/swagger-service-instances*': {
+                target: 'http://10.10.177.26:8880',
+                secure: false
+            }
         },
         watchOptions: {
             aggregateTimeout: 300,

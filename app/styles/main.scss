@@ -1,4 +1,8 @@
 /*this file should contain a list of the imports for your site, not css in this file*/
 //base theme should first
-@import "variables";
+@import 'variables';
+@import 'colors';
+// Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
+@import 'custom';

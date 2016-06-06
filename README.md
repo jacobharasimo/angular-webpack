@@ -1,9 +1,11 @@
 # angular-webpack
-First attempt at a very simple webpack boilerplate.  
+sample template
 
 ##Features
 Angular 1.5.x  
 Typescript  
 TSlint  
 SCSS  
-webpack-dev-server with live reload
+webpack-dev-server with live reload  
+Bootstrap  
+Gulp
